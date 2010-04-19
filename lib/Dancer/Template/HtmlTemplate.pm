@@ -2,21 +2,19 @@ package Dancer::Template::HtmlTemplate;
 
 use strict;
 use warnings;
-use Dancer::Config 'setting';
 use Dancer::ModuleLoader;
 use Dancer::FileUtils 'path';
 
 use base 'Dancer::Template::Abstract';
 
-my $_engine;
+our $VERSION = '0.01';
+
 
 sub init {
     my ($self) = @_;
 
     die "HTML::Template is needed by Dancer::Template::HtmlTemplate"
       unless Dancer::ModuleLoader->load('HTML::Template');
-
-    $_engine = Template->new(%$tt_config);
 }
 
 sub render($$$) {
@@ -24,7 +22,13 @@ sub render($$$) {
     die "'$template' is not a regular file"
       if !ref($template) && (!-f $template);
 
-    my $ht = HTML::Template->new(filename => $template, %{$self->config});
+    my $ht = HTML::Template->new(
+        filename => $template,
+        die_on_bad_params => 0, # Required, as we pass through other params too
+        %{$self->config}
+    );
+    use Data::Dump;
+    Dancer::Logger->debug(Data::Dump::dump($tokens) );
     $ht->param($tokens);
     return $ht->output;
 
