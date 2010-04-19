@@ -55,6 +55,22 @@ In order to use this engine, use the template setting:
 This can be done in your config.yml file or directly in your app code with the
 B<set> keyword.
 
+Since HTML::Template uses different syntax to other template engines like
+Template::Toolkit, for current Dancer versions the default layout main.tt will
+need to be updated, changing the C<[% content %]> line to:
+
+    <!--tmpl_var name="content"-->
+
+or
+
+    <TMPL_VAR name="content">
+
+Future versions of Dancer may ask you which template engine you wish to use, and
+write the default layout appropriately.
+
+Also, currently template filenames should end with .tt; again, future Dancer
+versions may change this requirement.
+
 
 =head1 SEE ALSO
 
