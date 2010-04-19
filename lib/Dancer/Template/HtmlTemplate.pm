@@ -24,9 +24,9 @@ sub render($$$) {
     die "'$template' is not a regular file"
       if !ref($template) && (!-f $template);
 
-    my $template = HTML::Template->new(filename => $template, %{$self->config});
-    $template->param($tokens);
-    return $template->output;
+    my $ht = HTML::Template->new(filename => $template, %{$self->config});
+    $ht->param($tokens);
+    return $ht->output;
 
 }
 
