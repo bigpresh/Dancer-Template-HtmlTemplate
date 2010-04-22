@@ -1,5 +1,8 @@
 Revision history for Dancer-Template-HtmlTemplate
 
-0.01    2010-05-19
+0.02    2010-04-22
+        Declaring Dancer & HTML::Template as deps would help.  Idiot.
+
+0.01    2010-04-19
         First version.
 
