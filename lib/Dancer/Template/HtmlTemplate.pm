@@ -7,7 +7,7 @@ use Dancer::FileUtils 'path';
 
 use base 'Dancer::Template::Abstract';
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 sub init {
