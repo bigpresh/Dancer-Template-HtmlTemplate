@@ -27,8 +27,6 @@ sub render($$$) {
         die_on_bad_params => 0, # Required, as we pass through other params too
         %{$self->config}
     );
-    use Data::Dump;
-    Dancer::Logger->debug(Data::Dump::dump($tokens) );
     $ht->param($tokens);
     return $ht->output;
 

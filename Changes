@@ -1,5 +1,8 @@
 Revision history for Dancer-Template-HtmlTemplate
 
+0.03    2010-04-24
+        Remove debug code which required Data::Dump - silly.
+
 0.02    2010-04-22
         Declaring Dancer & HTML::Template as deps would help.  Idiot.
 
