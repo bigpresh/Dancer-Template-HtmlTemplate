@@ -1,5 +1,8 @@
 Revision history for Dancer-Template-HtmlTemplate
 
+0.04    2010-05-14
+        Added tests, thanks to Franck Cuny
+
 0.03    2010-04-24
         Remove debug code which required Data::Dump - silly.
 
