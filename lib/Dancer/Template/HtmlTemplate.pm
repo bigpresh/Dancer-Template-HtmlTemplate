@@ -22,6 +22,9 @@ sub render($$$) {
     die "'$template' is not a regular file"
       if !ref($template) && (!-f $template);
 
+    _flatten($tokens)
+      if ref $tokens eq 'HASH';
+
     my $ht = HTML::Template->new(
         filename => $template,
         die_on_bad_params => 0, # Required, as we pass through other params too
@@ -30,6 +33,21 @@ sub render($$$) {
     $ht->param($tokens);
     return $ht->output;
 
+}
+
+sub _flatten {
+    my ($h) = @_;
+    my @keys = keys %$h;
+    while (my $k = shift @keys) {
+          my @n;
+          my $v = $h->{$k};
+          @$h{ @n = map "$k.$_", keys %$v } = values %$v
+            if ref $v eq 'HASH';
+          @$h{ @n = map "$k.$_", 0..@$v-1} = @$v
+            if ref $v eq 'ARRAY';
+          push(@keys, @n), delete $h->{$k}
+            if ref($v) =~ '^HASH$|^ARRAY$';
+    }
 }
 
 1;
