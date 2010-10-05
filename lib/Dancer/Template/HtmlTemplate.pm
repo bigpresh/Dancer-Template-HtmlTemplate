@@ -46,7 +46,7 @@ sub _flatten {
           @$tokens{ @new_keys = map "$key.$_", 0..@$value-1} = @$value
             if ref $value eq 'ARRAY';
           push(@keys, @new_keys), delete $tokens->{$key}
-            if ref($value) =~ '^HASH$|^ARRAY$';
+            if ref($value) =~ 'HASH|ARRAY';
     }
 }
 
