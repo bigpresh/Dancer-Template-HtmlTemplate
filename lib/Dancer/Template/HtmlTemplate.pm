@@ -39,14 +39,12 @@ sub _flatten {
     my ($tokens) = @_;
     my @keys = keys %$tokens;
     while (my $key = shift @keys) {
-          my @new_keys;
-          my $value = $tokens->{$key};
-          @$tokens{ @new_keys = map "$key.$_", keys %$value } = values %$value
-            if ref $value eq 'HASH';
-          @$tokens{ @new_keys = map "$key.$_", 0..@$value-1} = @$value
-            if ref $value eq 'ARRAY';
-          push(@keys, @new_keys), delete $tokens->{$key}
-            if ref($value) =~ 'HASH|ARRAY';
+        ref $tokens->{$key} eq 'HASH'
+          or next;
+        my $value = delete $tokens->{$key};
+        my @new_keys = map "$key.$_", keys %$value;
+        @$tokens{@new_keys} = values %$value;
+        push(@keys, @new_keys);
     }
 }
 
