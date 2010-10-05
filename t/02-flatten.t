@@ -21,6 +21,7 @@ my $result = $engine->render(
                 gruh => 3,
             },
         },
+        0 => { tricky => 'properly handled' },
         testloop => [
                      { i => 1, label => 'one'},
                      {i => 2, label => 'two'},
@@ -34,6 +35,7 @@ this is var="0"
 this is foo.bar="1"
 this is foo.baz.klong="2"
 this is foo=""
+tricky stuff is properly handled
 1-one
 2-two
 

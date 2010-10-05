@@ -38,7 +38,8 @@ sub render($$$) {
 sub _flatten {
     my ($tokens) = @_;
     my @keys = keys %$tokens;
-    while (my $key = shift @keys) {
+    while (@keys) {
+        my $key = shift @keys;
         ref $tokens->{$key} eq 'HASH'
           or next;
         my $value = delete $tokens->{$key};
