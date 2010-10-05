@@ -1,5 +1,9 @@
 Revision history for Dancer-Template-HtmlTemplate
 
+0.06    2010-10-05
+        Add extra tests; forgot to update MANIFEST with these before building
+        the last release, so they weren't included.  D'oh!
+
 0.05    2010-10-05
         Flatten nested hashrefs, as HTML::Template doesn't support them.
         Given params like { foo => { bar => 'Foo' } }, you can access the value
