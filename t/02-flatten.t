@@ -20,8 +20,11 @@ my $result = $engine->render(
                 klong => 2,
                 gruh => 3,
             },
-            array => [ qw(one two three four) ],
         },
+        testloop => [
+                     { i => 1, label => 'one'},
+                     {i => 2, label => 'two'},
+                    ],
     }
 );
 
@@ -30,7 +33,9 @@ my $expected =
 this is var="0"
 this is foo.bar="1"
 this is foo.baz.klong="2"
-this is foo.array.2="three"
 this is foo=""
+1-one
+2-two
+
 );
 is $result, $expected, "flatten hashes and arrays";
