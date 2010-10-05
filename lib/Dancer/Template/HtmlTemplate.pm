@@ -36,17 +36,17 @@ sub render($$$) {
 }
 
 sub _flatten {
-    my ($h) = @_;
-    my @keys = keys %$h;
-    while (my $k = shift @keys) {
-          my @n;
-          my $v = $h->{$k};
-          @$h{ @n = map "$k.$_", keys %$v } = values %$v
-            if ref $v eq 'HASH';
-          @$h{ @n = map "$k.$_", 0..@$v-1} = @$v
-            if ref $v eq 'ARRAY';
-          push(@keys, @n), delete $h->{$k}
-            if ref($v) =~ '^HASH$|^ARRAY$';
+    my ($tokens) = @_;
+    my @keys = keys %$tokens;
+    while (my $key = shift @keys) {
+          my @new_keys;
+          my $value = $tokens->{$key};
+          @$tokens{ @new_keys = map "$key.$_", keys %$value } = values %$value
+            if ref $value eq 'HASH';
+          @$tokens{ @new_keys = map "$key.$_", 0..@$value-1} = @$value
+            if ref $value eq 'ARRAY';
+          push(@keys, @new_keys), delete $tokens->{$key}
+            if ref($value) =~ '^HASH$|^ARRAY$';
     }
 }
 
