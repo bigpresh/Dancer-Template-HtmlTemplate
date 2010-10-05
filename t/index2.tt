@@ -1,0 +1,6 @@
+
+this is var="<TMPL_VAR NAME=var >"
+this is foo.bar="<TMPL_VAR NAME=foo.bar >"
+this is foo.baz.klong="<TMPL_VAR NAME=foo.baz.klong >"
+this is foo.array.2="<TMPL_VAR NAME=foo.array.2 >"
+this is foo="<TMPL_VAR NAME=foo >"
