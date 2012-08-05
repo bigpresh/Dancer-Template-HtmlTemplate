@@ -4,11 +4,11 @@ use strict;
 use warnings;
 use Dancer::ModuleLoader;
 use Dancer::FileUtils 'path';
+use Dancer::Config 'setting';
 
 use base 'Dancer::Template::Abstract';
 
-our $VERSION = '0.06';
-
+our $VERSION = '0.07';
 
 sub init {
     my ($self) = @_;
@@ -22,13 +22,19 @@ sub render($$$) {
     die "'$template' is not a regular file"
       if !ref($template) && (!-f $template);
 
+    my $cnf = setting('engines');
+    my %config;
+    foreach my $k (%{$cnf}) {
+        %config = %$k if ref $k;
+    }
+    
     _flatten($tokens)
       if ref $tokens eq 'HASH';
 
     my $ht = HTML::Template->new(
         filename => $template,
+        %config,
         die_on_bad_params => 0, # Required, as we pass through other params too
-        %{$self->config}
     );
     $ht->param($tokens);
     return $ht->output;
@@ -98,7 +104,9 @@ For instance, the session contents are passed to Dancer templates as C<session>
 
     <TMPL_VAR name="session.username">
 
+=head1 BUGS
 
+You cannot set die_on_bad_params to true when using HTML::Template with Dancer.
 
 =head1 SEE ALSO
 
