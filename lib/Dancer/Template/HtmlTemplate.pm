@@ -89,10 +89,6 @@ or
 Future versions of Dancer may ask you which template engine you wish to use, and
 write the default layout appropriately.
 
-Also, currently template filenames should end with .tt; again, future Dancer
-versions may change this requirement.
-
-
 =head1 Handling nested hashrefs
 
 Since HTML::Template does not allow you to access nested hashrefs (at least,
