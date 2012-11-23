@@ -108,9 +108,9 @@ option, for example, to declare that the extension should be C<.tmpl>:
         HtmlTemplate:
             extension: 'tmpl'
 
-Even if you use the default C<.tt>, you may want to explictly set that, as
-future versions may default to a more suitable 
-
+B<WARNING> - Even if you use the default C<.tt>, you may want to explictly 
+set the C<extension> setting to indicate that, as future versions may default
+to a more suitable file extension.
 
 
 =head1 Handling nested hashrefs
