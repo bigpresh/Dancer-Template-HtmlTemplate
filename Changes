@@ -1,5 +1,9 @@
 Revision history for Dancer-Template-HtmlTemplate
 
+0.07    2012-11-23 (LPW2012-eve)
+        Better documentation, and warn if die_on_bad_params is supplied.
+        Thanks to gjskha for spurring this on.
+
 0.06    2010-10-05
         Add extra tests; forgot to update MANIFEST with these before building
         the last release, so they weren't included.  D'oh!
