@@ -27,8 +27,8 @@ sub render($$$) {
 
     my $ht = HTML::Template->new(
         filename => $template,
-        die_on_bad_params => 0, # Required, as we pass through other params too
         %{$self->config}
+        die_on_bad_params => 0, # Required, as we pass through other params too
     );
     $ht->param($tokens);
     return $ht->output;
