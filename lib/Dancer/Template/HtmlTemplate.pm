@@ -72,7 +72,7 @@ and the L<HTML::Template> module.
 
 In order to use this engine, use the template setting:
 
-    template: html_template
+    template: HtmlTemplate
 
 This can be done in your config.yml file or directly in your app code with the
 B<set> keyword.
