@@ -25,9 +25,16 @@ sub render($$$) {
     _flatten($tokens)
       if ref $tokens eq 'HASH';
 
+    my $config = $self->config;
+    if ($config->{die_on_bad_params}) {
+        Dancer::Logger::warning(
+            "Ignoring die_on_bad_params setting supplied - see documentation"
+        );
+        delete $config->{die_on_bad_params};
+    }
     my $ht = HTML::Template->new(
         filename => $template,
-        %{$self->config}
+        %$config,
         die_on_bad_params => 0, # Required, as we pass through other params too
     );
     $ht->param($tokens);
