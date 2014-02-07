@@ -18,4 +18,14 @@ WriteMakefile(
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Dancer-Template-HtmlTemplate-*' },
+    META_MERGE => {
+        'meta-spec' => { version => 2 },
+        resources => {
+            repository => {
+                type => 'git',
+                url  => 'https://github.com/bigpresh/Dancer-Template-HtmlTemplate.git',
+                web  => 'https://github.com/bigpresh/Dancer-Template-HtmlTemplate',
+            },
+        },
+    },
 );
